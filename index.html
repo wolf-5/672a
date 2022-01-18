@@ -64,11 +64,17 @@ transform: scale(1.1)
 </style>
 <script src="exp_webkit.js"></script>
  <script src="jb.js"></script>
-<script>
-if (window.applicationCache.status=='0'){window.location.replace("cache.html");}
-window.applicationCache.onnoupdate=function(){setTimeout(function(){load_Jailbreak(); }, 1500);};
-window.applicationCache.onerror=function(){setTimeout(function(){load_Jailbreak(); }, 1500);};
-</script>
+ <script>
+  window.applicationCache.ondownloading=function(){document.getElementById("msgs2").innerHTML="Page Caching Started!!"};
+  window.applicationCache.onprogress=function(a){document.getElementById("msgs2").innerHTML="Caching Status: "+(Math.round(100*(a.loaded/a.total)))+"% Completed"};
+  window.applicationCache.oncached=function(){document.getElementById("msgs2").innerHTML="Page Cached Successfully!!";setTimeout(function(){document.getElementById("msgs2").innerHTML="Turn Off the Internet & Reopen the Browser!!"; }, 1500);};
+  window.applicationCache.onnoupdate=function(){setTimeout(function(){load_JB(); }, 1500);};
+  window.applicationCache.onerror=function(){setTimeout(function(){load_JB(); }, 1500);};
+ </script>
+</head>
+<body id="body">
+ <div id="app"><!-- app start -->
+ <canvas v-show="isAnimate1Show" id=c></canvas>
 </head>
 <br><br><br><br>
 <div style='font-size:25px;text-align:center;'>
